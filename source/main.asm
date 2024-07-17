@@ -2,8 +2,8 @@ INCLUDE "includes/constants.inc"
 INCLUDE "includes/macros.inc"
 ;INCLUDE "includes/charmap.inc"
 
-INCLUDE "libraries/gb-engine-core/gb-engine-core.inc"
-    gb_engine_core_version 0.2.0
+INCLUDE "libraries/gbc-engine-core/gbc-engine-core.inc"
+    gbc_engine_core_version 0.2.0
 
 
 SECTION "Program Main", ROM0
