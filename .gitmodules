@@ -1,0 +1,11 @@
+[submodule "gbc-engine-core"]
+	path = ./libraries/gbc-engine-core
+	url = https://github.com/etdv-thevoid/gbc-engine-core.git
+
+[submodule "hardware.inc"]
+	path = ./libraries/hardware.inc
+	url = https://github.com/gbdev/hardware.inc.git
+
+[submodule "rgbds-structs"]
+	path = ./libraries/rgbds-structs
+	url = https://github.com/ISSOtm/rgbds-structs.git
