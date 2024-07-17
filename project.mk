@@ -1,24 +1,26 @@
 # This file contains project-specific configuration.
 # You can override variables set in the Makefile here.
 
+# ROM name
+ROMNAME := gbc-engine-core
+ROMEXT  := gbc
 
 # Value that the ROM will be filled with.
 PADVALUE := 0xFF
 
-## Header constants (passed to RGBFIX).
-
-# ROM version (typically starting at 0 and incremented for each published version).
-VERSION := 0
+# Game title, up to 11 ASCII chars.
+TITLE := GBC-ENGINE-
 
 # 4-ASCII letter game ID.
 GAMEID := CORE
 
-# Game title, up to 11 ASCII chars.
-TITLE := GBC-ENGINE-
+# ROM version (typically starting at 0 and incremented for each published version).
+VERSION := 0
 
 # New licensee, 2 ASCII chars.
 # Homebrew games FTW!.
 LICENSEE := HB
+
 # Old licensee, please set to 0x33 (required to get SGB compatibility).
 OLDLIC := 0x33
 
@@ -28,16 +30,10 @@ OLDLIC := 0x33
 # If using no MBC, consider enabling `-t` below.
 MBC := 0x1B
 
-# ROM size is set automatically by RGBFIX.
-
 # Size of the on-board SRAM; MBC type should indicate the presence of RAM.
 # See https://gbdev.io/pandocs/The_Cartridge_Header#0149--ram-size or consult any copy of Pan Docs.
 # Set this to 0 when using MBC2's built-in SRAM.
 SRAMSIZE := 0x02
-
-# ROM name
-ROMNAME := gbc-engine-core
-ROMEXT  := gbc
 
 
 # Compilation parameters, uncomment to apply, comment to cancel.
