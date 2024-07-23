@@ -1,31 +1,45 @@
 INCLUDE "includes/constants.inc"
 INCLUDE "includes/macros.inc"
-;INCLUDE "includes/charmap.inc"
-
-INCLUDE "libraries/gbc-engine-core/gbc-engine-core.inc"
-    gbc_engine_core_version 0.2.0
+INCLUDE "includes/charmap.inc"
 
 
-SECTION "Program Main", ROM0
+SECTION "Program Main Example", ROM0
 
+; The main program loop.
+;
+; `gbc-engine-core` hands off code execution to a function labeled `_Main` when done with initial setup.
+;
+;The function can assume the following:
+; - All ram areas are cleared
+; - LCD is off
+; - Interrupts are disabled
 _Main::
-    ; You code goes here!
-    ld a, BANK(xExample)
-    ld hl, xExample
-    call _FarCall
+    ; Your code goes here!
+
+
+
+    ; returning out of _Main will cause a crash!
     ret
 
 ENDSECTION
 
 
-SECTION "Program Crash", ROM0
+SECTION "Font Tiles Example", ROM0
 
-_CrashHandler::
-    ; You code goes here!
-.loop
-    halt
-    nop
-    jr .loop
-    ret
+; gbc-engine-core requires a .1bpp set of font tiles in ASCII format for the crash screen.
+;
+; Format:
+;
+;```
+; !"#$%&'()*+,-./
+;0123456789:;<=>?
+;@ABCDEFGHIJKLMNO
+;PQRSTUVWXYZ[\]^_
+;`abcdefghijklmno
+;pqrstuvwxyz{|}~
+;```
+_FontTiles::
+    INCBIN "assets/font.1bpp"
+.end::
 
 ENDSECTION

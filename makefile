@@ -35,8 +35,9 @@ clean:
 # `rebuild`: Build everything from scratch
 rebuild:
 	${MAKE} clean
-	${MAKE} all
+	${MAKE} rom
 .PHONY: rebuild
+
 
 # How to convert graphics
 assets/%.2bpp: images/%.png
@@ -47,13 +48,24 @@ assets/%.1bpp: images/%.png
 	@mkdir -p "${@D}"
 	${RGBGFX} -d 1 -o $@ $<
 
-# How to compile binary files
-bin/%.obj: source/%.asm
-	@mkdir -p "${@D}"
-	${RGBASM} ${ASFLAGS} -o $@ $<
 
-# How to build a ROM.
+# How to build `.mk` file dependency lists
+bin/%.mk: source/%.asm
+	@mkdir -p "${@D}"
+	${RGBASM} ${ASFLAGS} -M $@ -MG -MP -MQ ${@:.mk=.obj} -MQ $@ -o ${@:.mk=.obj} $<
+
+
+# How to compile binary files using the `.mk` files
+bin/%.obj: bin/%.mk
+	@touch $@
+
+# Include `.mk` file dependency lists
+ifeq ($(filter clean,${MAKECMDGOALS}),)
+include $(patsubst source/%.asm,bin/%.mk,${SRCS})
+endif
+
+# How to build a ROM
 dist/%.${ROMEXT}: $(patsubst source/%.asm,bin/%.obj,${SRCS})
 	@mkdir -p "${@D}"
-	${RGBLINK} ${LDFLAGS} -m dist/$*.map -n dist/$*.sym -o $@ $^
-	${RGBFIX} -v ${FIXFLAGS} $@
+	${RGBLINK} ${LDFLAGS} -m dist/$*.map -n dist/$*.sym -o $@ $^ \
+	&& ${RGBFIX} -v ${FIXFLAGS} $@
