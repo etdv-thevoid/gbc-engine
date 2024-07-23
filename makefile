@@ -1,3 +1,5 @@
+.SUFFIXES:
+
 # Recursive `wildcard` function.
 rwildcard = $(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
 
@@ -12,7 +14,7 @@ ROM = dist/${ROMNAME}.${ROMEXT}
 # Argument constants
 INCDIRS  = source/ includes/
 WARNINGS = all extra
-ASFLAGS  = -p ${PADVALUE} $(addprefix -I ,${INCDIRS}) $(addprefix -W ,${WARNINGS}) -h
+ASFLAGS  = -p ${PADVALUE} $(addprefix -I ,${INCDIRS}) $(addprefix -W ,${WARNINGS})
 LDFLAGS  = -p ${PADVALUE}
 FIXFLAGS = -p ${PADVALUE} -t "${TITLE}" -i "${GAMEID}" -k "${LICENSEE}" -l ${OLDLIC} -m ${MBC} -n ${VERSION} -r ${SRAMSIZE}
 
@@ -54,7 +56,6 @@ bin/%.mk: source/%.asm
 	@mkdir -p "${@D}"
 	${RGBASM} ${ASFLAGS} -M $@ -MG -MP -MQ ${@:.mk=.obj} -MQ $@ -o ${@:.mk=.obj} $<
 
-
 # How to compile binary files using the `.mk` files
 bin/%.obj: bin/%.mk
 	@touch $@
@@ -65,7 +66,9 @@ include $(patsubst source/%.asm,bin/%.mk,${SRCS})
 endif
 
 # How to build a ROM
+# Note how gbc-engine-core.inc is rebuilt with hardware.inc each time
 dist/%.${ROMEXT}: $(patsubst source/%.asm,bin/%.obj,${SRCS})
 	@mkdir -p "${@D}"
-	${RGBLINK} ${LDFLAGS} -m dist/$*.map -n dist/$*.sym -o $@ $^ \
+	${RGBASM} -p ${PADVALUE} -P libraries/hardware.inc/hardware.inc -o bin/gbc-engine-core.obj libraries/gbc-engine-core/gbc-engine-core.inc \
+	&& ${RGBLINK} ${LDFLAGS} -m dist/$*.map -n dist/$*.sym -o $@ bin/gbc-engine-core.obj $^ \
 	&& ${RGBFIX} -v ${FIXFLAGS} $@
