@@ -66,9 +66,9 @@ include $(patsubst source/%.asm,bin/%.mk,${SRCS})
 endif
 
 # How to build a ROM
-# Note how gbc-engine-core.inc is rebuilt with hardware.inc each time
+# Note how libraries.inc is rebuilt and linked every time
 dist/%.${ROMEXT}: $(patsubst source/%.asm,bin/%.obj,${SRCS})
 	@mkdir -p "${@D}"
-	${RGBASM} -p ${PADVALUE} -P libraries/hardware.inc/hardware.inc -o bin/gbc-engine-core.obj libraries/gbc-engine-core/gbc-engine-core.inc \
-	&& ${RGBLINK} ${LDFLAGS} -m dist/$*.map -n dist/$*.sym -o $@ bin/gbc-engine-core.obj $^ \
+	${RGBASM} -p ${PADVALUE} -o bin/libraries.obj libraries/libraries.inc \
+	&& ${RGBLINK} ${LDFLAGS} -m dist/$*.map -n dist/$*.sym -o $@ bin/libraries.obj $^ \
 	&& ${RGBFIX} -v ${FIXFLAGS} $@
