@@ -7,3 +7,6 @@
 [submodule "libraries/rgbds-structs"]
 	path = libraries/rgbds-structs
 	url = https://github.com/ISSOtm/rgbds-structs.git
+[submodule "libraries/gbc-engine-utils"]
+	path = libraries/gbc-engine-utils
+	url = https://github.com/etdv-thevoid/gbc-engine-utils.git
