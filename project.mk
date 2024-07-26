@@ -15,7 +15,7 @@ TITLE := GBC-ENGINE-
 GAMEID := CORE
 
 # ROM version (typically starting at 0 and incremented for each published version).
-VERSION := 0
+VERSION := 0x00
 
 # New licensee, 2 ASCII chars.
 # Homebrew games FTW!.
