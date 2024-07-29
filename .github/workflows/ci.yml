@@ -40,6 +40,9 @@ jobs:
       # CHECKOUT REPOSITORY
       - name: "Checkout repository"
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
 
       # BUILD ROM
       - name: "Build ROM"
