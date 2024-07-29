@@ -38,12 +38,10 @@ jobs:
           sudo make install
 
       # CHECKOUT REPOSITORY
-      - id: checkout-repository
-        name: "Checkout repository"
+      - name: "Checkout repository"
         uses: actions/checkout@v4
 
       # BUILD ROM
-      - id: build-rom
-        name: "Build ROM"
+      - name: "Build ROM"
         run: |
           make
