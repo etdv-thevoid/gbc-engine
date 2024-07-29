@@ -17,7 +17,7 @@ SECTION "Font Tiles Example", ROM0
 ;pqrstuvwxyz{|}~
 ;```
 _FontTiles::
-    INCBIN "assets/font.1bpp"
+    INCBIN "temp/font.1bpp"
 .end::
 
 ENDSECTION
