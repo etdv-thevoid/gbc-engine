@@ -4,3 +4,12 @@
 # Game Boy (Color) Engine
 
 A quick and dirty Game Boy (Color) engine template for homebrew games
+
+
+## See Also
+
+This repository is part of my Game Boy (Color) Engine project:
+
+- [GBC Engine](https://github.com/etdv-thevoid/gbc-engine)
+- [GBC Engine - Core](https://github.com/etdv-thevoid/gbc-engine-core)
+- [GBC Engine - Utils](https://github.com/etdv-thevoid/gbc-engine-utils)
