@@ -4,14 +4,16 @@ INCLUDE "includes/charmap.inc"
 
 SECTION "Program Main Example", ROM0
 
-; The main program loop.
-;
-; `gbc-engine-core` hands off code execution to a function labeled `_Main` when done with initial setup.
-;
-;The function can assume the following:
-; - All ram areas are cleared
-; - LCD is off
-; - Interrupts are disabled
+/*
+The main program loop.
+
+`gbc-engine-core.inc` hands off code execution to a function labeled `_Main` when done with initial setup.
+
+The function can assume the following:
+- All ram areas are cleared
+- LCD is off
+- Interrupts are disabled
+*/
 _Main::
     ; Your code goes here!
 
@@ -24,20 +26,69 @@ ENDSECTION
 
 SECTION "Font Tiles Example", ROM0
 
-; gbc-engine-core requires a .1bpp set of font tiles in ASCII format for the crash screen.
-;
-; Format:
-;
-;```
-; !"#$%&'()*+,-./
-;0123456789:;<=>?
-;@ABCDEFGHIJKLMNO
-;PQRSTUVWXYZ[\]^_
-;`abcdefghijklmno
-;pqrstuvwxyz{|}~
-;```
+/*
+`gbc-engine-core.inc` requires a .1bpp set of font tiles in ASCII format for the crash screen.
+
+Format:
+
+```
+ !"#$%&'()*+,-./
+0123456789:;<=>?
+@ABCDEFGHIJKLMNO
+PQRSTUVWXYZ[\]^_
+`abcdefghijklmno
+pqrstuvwxyz{|}~
+```
+*/
 _FontTiles::
     INCBIN "temp/font.1bpp"
 .end::
+
+ENDSECTION
+
+
+SECTION "Sound Data Example", ROM0
+
+/*
+`gbc-engine-sound.inc` requires a lookup table of addresses to sound data to play sounds!
+
+```
+_SoundDataTable:
+    DW _SfxExample1
+    DW _SfxExample2
+    DW _SfxExample3
+    DW _SfxExample4
+    DW $0000
+```
+*/
+_SoundDataTable::
+    DW _SfxExample1
+    DW _SfxExample2
+    DW _SfxExample3
+    DW _SfxExample4
+    DW $0000
+
+_SfxExample1:
+    sound_entry_start 1, 2
+    sound_entry_ch1 3, 0,0,0, 0,0, 7,0,0, 0, 1046
+    sound_entry_ch1 5, 0,0,0, 2,0, 7,0,0, 0, 1379
+    sound_entry_stop
+
+_SfxExample2:
+    sound_entry_start 2, 3
+    sound_entry_ch2 3, 2,51, 15,0,0, 0, 31
+    sound_entry_ch2 2, 2,55, 7,0,0,  0, 31
+    sound_entry_ch2 5, 2,42, 15,0,0, 0, 31
+    sound_entry_stop
+
+_SfxExample3:
+    sound_entry_start 3, 1
+    sound_entry_ch3 3, 0, 3, 1, 1924
+    sound_entry_stop
+
+_SfxExample4:
+    sound_entry_start 4, 1
+    sound_entry_ch4 5, 0, 7,0,0, 5,1,7, 0
+    sound_entry_stop
 
 ENDSECTION

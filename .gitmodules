@@ -10,3 +10,6 @@
 [submodule "libraries/gbc-engine-utils"]
 	path = libraries/gbc-engine-utils
 	url = https://github.com/etdv-thevoid/gbc-engine-utils.git
+[submodule "libraries/gbc-engine-sound"]
+	path = libraries/gbc-engine-sound
+	url = https://github.com/etdv-thevoid/gbc-engine-sound.git
