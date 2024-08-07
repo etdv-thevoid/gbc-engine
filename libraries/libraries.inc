@@ -10,7 +10,7 @@ INCLUDE "libraries/hardware.inc/hardware.inc"
     rev_Check_hardware_inc 4.9.1
 
 INCLUDE "libraries/gbc-engine-core/gbc-engine-core.inc"
-    gbc_engine_core_version 0.8.1
+    gbc_engine_core_version 0.8.2
 
 INCLUDE "libraries/gbc-engine-sound/gbc-engine-sound.inc"
     gbc_engine_sound_version 0.1.0
