@@ -4,7 +4,4 @@ INCLUDE "libraries/gbc-engine-utils/gbc-engine-utils.inc"
 INCLUDE "libraries/gbc-engine-sound/gbc-engine-sound-macros.inc"
     gbc_engine_sound_macros_version 0.2.2
 
-INCLUDE "libraries/rgbds-structs/structs.inc"
-    rgbds_structs_version 4.0.0
-
 ; Add your macros here!
