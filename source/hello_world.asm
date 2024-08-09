@@ -40,7 +40,9 @@ _HelloWorld::
     ld bc, _UpdateSound
     rst _SetTIMHandler
 
-    ; Initialize Sound driver
+    ; Initialize Sound driver with 4 sounds
+    ld a, 4
+    ld bc, _HelloWorldSounds
     call _InitSound
 
     ; Enable VBlank Interrupt
@@ -54,13 +56,13 @@ _HelloWorld::
 
     ; During the first (blank) frame, initialize palette
     call _SetDMGPalettesDefault
+    
+    ; Enable Interrupts
+    ei
 
     ; Play sound 0 (coin collect sfx)
     ld a, 0
     call _PlaySound
-
-    ; Enable Interrupts
-    ei
 
 .loop:
     ; Wait for VBlank Interrupt (which polls keys and updates HRAM variables)
@@ -75,6 +77,11 @@ _HelloWorld::
     ldh a, [hKeysPressed]
     and a, PADF_B | PADF_A
     jr nz, .invert
+
+    ; Play percussion sound effect if D-Pad was pressed
+    ldh a, [hKeysPressed]
+    and a, PADF_DOWN | PADF_UP | PADF_LEFT | PADF_RIGHT
+    jr nz, .percussion
 
     jr .loop
 
@@ -100,6 +107,13 @@ _HelloWorld::
 
     jr .loop
 
+.percussion:
+    ; and play sound 3 (percussion)
+    ld a, 3
+    call _PlaySound
+
+    jr .loop
+
 
 ; Hello World tiles
 _HelloWorldTiles:
@@ -111,5 +125,46 @@ _HelloWorldTiles:
 _HelloWorldTilemap:
     INCBIN "assets/hello_world.tilemap"
 .end:
+
+
+; Hello World sounds
+_HelloWorldSounds::
+    DW _SfxCoinCollect
+    DW _SfxGameOver
+    DW _SfxJump
+    DW _SfxPercussion
+    DW _NULL
+
+
+; Simple coin collect sound effect
+_SfxCoinCollect:
+    sound_entry_start 1, 2
+    sound_entry_ch1  5, 0,0,0, 2,42, 15,0,0, 0, 1915
+    sound_entry_ch1 15, 0,0,0, 2, 4, 15,0,0, 0, 1949
+    sound_entry_stop
+
+
+; Simple Game Over sound effect
+_SfxGameOver:
+    sound_entry_start 2, 3
+    sound_entry_ch2 3, 2,51, 15,0,0, 0, 31
+    sound_entry_ch2 2, 2,55, 7,0,0,  0, 31
+    sound_entry_ch2 5, 2,42, 15,0,0, 0, 31
+    sound_entry_stop
+
+
+; Simple jump sound effect
+_SfxJump:
+    sound_entry_start 3, 1
+    sound_entry_ch3 3, 0, 3, 1, 1924
+    sound_entry_stop
+
+
+; Simple percussion sound effect
+_SfxPercussion:
+    sound_entry_start 4, 1
+    sound_entry_ch4 5, 0, 7,0,0, 5,1,7, 0
+    sound_entry_stop
+
 
 ENDSECTION
