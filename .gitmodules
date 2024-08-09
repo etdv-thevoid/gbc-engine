@@ -4,9 +4,3 @@
 [submodule "libraries/gbc-engine-core"]
 	path = libraries/gbc-engine-core
 	url = https://github.com/etdv-thevoid/gbc-engine-core.git
-[submodule "libraries/gbc-engine-sound"]
-	path = libraries/gbc-engine-sound
-	url = https://github.com/etdv-thevoid/gbc-engine-sound.git
-[submodule "libraries/gbc-engine-utils"]
-	path = libraries/gbc-engine-utils
-	url = https://github.com/etdv-thevoid/gbc-engine-utils.git

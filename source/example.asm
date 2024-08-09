@@ -51,7 +51,7 @@ ENDSECTION
 SECTION "Sound Data Example", ROM0
 
 /*
-`gbc-engine-sound.inc` requires a lookup table of addresses to sound data to play sounds!
+`gbc-engine-core.inc` requires a lookup table of addresses to sound data to play sounds!
 
 ```
 _SoundDataTable:
