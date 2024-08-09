@@ -128,7 +128,7 @@ _HelloWorldTilemap:
 
 
 ; Hello World sounds
-_HelloWorldSounds::
+_HelloWorldSounds:
     DW _SfxCoinCollect
     DW _SfxGameOver
     DW _SfxJump
