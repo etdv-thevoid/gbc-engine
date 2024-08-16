@@ -42,7 +42,7 @@ pqrstuvwxyz{|}~
 ```
 */
 _FontTiles::
-    INCBIN "temp/font.1bpp"
+    INCBIN "assets/tilesets/font.1bpp"
 .end::
 
 ENDSECTION

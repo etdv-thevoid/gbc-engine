@@ -3,7 +3,7 @@
 
 # ROM name
 ROMNAME := gbc-engine-core
-ROMEXT  := gbc
+ROMEXT  := gb
 
 # Value that the ROM will be filled with.
 PADVALUE := 0xFF
@@ -18,8 +18,7 @@ GAMEID := CORE
 VERSION := 0x00
 
 # New licensee, 2 ASCII chars.
-# Homebrew games FTW!.
-LICENSEE := HB
+LICENSEE := HB # Homebrew Game!
 
 # Old licensee, please set to 0x33 (required to get SGB compatibility).
 OLDLIC := 0x33
@@ -43,7 +42,7 @@ SRAMSIZE := 0x02
 
 # Export all labels.
 # This means they must all have unique names, but they will all show up in the .sym and .map files.
-# ASFLAGS += -E
+# ASMFLAGS += -E
 
 # Game Boy Color compatible.
 # FIXFLAGS += -c
@@ -54,10 +53,10 @@ SRAMSIZE := 0x02
 # FIXFLAGS += -s
 
 # Game Boy mode.
-# LDFLAGS += -d
+# LNKFLAGS += -d
 
 # No banked WRAM mode.
-# LDFLAGS += -w
+# LNKFLAGS += -w
 
 # 32k mode.
-# LDFLAGS += -t
+# LNKFLAGS += -t

@@ -117,13 +117,13 @@ _HelloWorld::
 
 ; Hello World tiles
 _HelloWorldTiles:
-    INCBIN "temp/hello_world.2bpp"
+    INCBIN "assets/tilesets/hello_world.2bpp"
 .end:
 
 
 ; Hello World tilemap
 _HelloWorldTilemap:
-    INCBIN "assets/hello_world.tilemap"
+    INCBIN "assets/tilemaps/hello_world.tilemap"
 .end:
 
 
