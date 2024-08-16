@@ -17,8 +17,8 @@ GAMEID := CORE
 # ROM version (typically starting at 0 and incremented for each published version).
 VERSION := 0x00
 
-# New licensee, 2 ASCII chars.
-LICENSEE := HB # Homebrew Game!
+# New licensee, 2 ASCII chars (HB for Homebrew Game!).
+LICENSEE := HB
 
 # Old licensee, please set to 0x33 (required to get SGB compatibility).
 OLDLIC := 0x33
