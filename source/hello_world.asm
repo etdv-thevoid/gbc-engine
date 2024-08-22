@@ -16,7 +16,7 @@ _HelloWorld::
     ld hl, _FontTiles
     ld bc, (_FontTiles.end - _FontTiles)
     ld de, vBLK21.32
-    call _VideoMemCopyMonochrome
+    call _VideoMemCopy1BitPerPixel
 
     ; Load Hello World tiles
     xor a
@@ -25,10 +25,14 @@ _HelloWorld::
     ld de, vBLK21.128
     call _VideoMemCopy
 
+    ; Decompress Hello World tilemap
+    ld hl, _HelloWorldTilemap
+    ld de, wTilemapDecompressionBuffer
+    call _MemCopyDecompressRLE
+
     ; Load Hello World tilemap
     xor a
-    ld hl, _HelloWorldTilemap
-    ld bc, (_HelloWorldTilemap.end - _HelloWorldTilemap)
+    ld hl, wTilemapDecompressionBuffer
     ld de, vSCRN0
     call _VideoMemCopy
     
@@ -123,7 +127,7 @@ _HelloWorldTiles:
 
 ; Hello World tilemap
 _HelloWorldTilemap:
-    INCBIN "assets/tilemaps/hello_world.tilemap"
+    INCBIN "assets/tilemaps/hello_world_tilemap.rle"
 .end:
 
 
@@ -166,5 +170,13 @@ _SfxPercussion:
     sound_entry_ch4 5, 0, 7,0,0, 5,1,7, 0
     sound_entry_stop
 
+
+ENDSECTION
+
+
+SECTION "Tilemap Decompression Buffer", WRAMX[_RAMBANK], BANK[1]
+
+wTilemapDecompressionBuffer:
+    DS $1000
 
 ENDSECTION

@@ -10,6 +10,7 @@ dist/
 *.2bpp
 *.1bpp
 *.rle
+*.out
 
 # Ignore ROM objects
 *.gb
