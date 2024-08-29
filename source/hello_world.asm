@@ -1,6 +1,4 @@
-INCLUDE "includes/constants.inc"
-INCLUDE "includes/macros.inc"
-INCLUDE "includes/charmap.inc"
+INCLUDE "includes/includes.inc"
 
 SECTION "Hello World", ROM0
 
