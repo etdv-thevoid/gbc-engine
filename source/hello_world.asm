@@ -165,7 +165,7 @@ _HelloWorldPalettes:
     rgb_palette #000000, #005500, #00AA00, #00FF00
     rgb_palette #000000, #000055, #0000AA, #0000FF
     rgb_palette #000000, #555500, #AAAA00, #FFFF00
-    rgb_palette #000000, #542A00, #AA5500, #FF8000
+    rgb_palette #000000, #552A00, #AA5500, #FF7F00
     rgb_palette #000000, #005555, #00AAAA, #00FFFF
     rgb_palette #000000, #550055, #AA00AA, #FF00FF
 
