@@ -52,6 +52,9 @@ _HelloWorld::
     ld a, IEF_VBLANK
     ldh [rIE], a
 
+    ; Set Background Color (if playing on GBC)
+    call _HelloWorldSetBackgroundColor
+
     ; Turn on LCD
     ld a, LCDCF_ON | LCDCF_BGON
     ldh [rLCDC], a
@@ -100,12 +103,16 @@ _HelloWorld::
 .invert:
     ; Invert background palette...
     ldh a, [rBGP]
-    cpl
-    ldh [rBGP], a
+    cp a, %11100100
+    call z, _SetDMGPalettesInverted
+    call nz, _SetDMGPalettesDefault
 
     ; and play sound 2 (jump sfx)
     ld a, 2
     call _PlaySound
+
+    ; Cycle colors on GBC instead!
+    call _HelloWorldIncrementBackgroundColor
 
     jr .loop
 
@@ -127,6 +134,40 @@ _HelloWorldTiles:
 _HelloWorldTilemap:
     INCBIN "assets/tilemaps/hello_world_tilemap.rle"
 .end:
+
+
+_HelloWorldIncrementBackgroundColor:
+    ld hl, wColorPalette
+    ld a, [hl]
+    inc a
+    and a, OAMF_PALMASK
+    ld [hl], a
+    ; fallthrough
+
+_HelloWorldSetBackgroundColor:
+    call _IsGBColor
+    ret z
+
+    ld a, [wColorPalette]
+    ld hl, _HelloWorldPalettes
+    ld b, 8                     ; each palette is 8 bytes wide (2 per color)
+    ld c, 32                    ; x 8 palettes = 32 bytes in the table
+    call _DataTable
+
+    xor a
+    jp _SetBackgroundPalette
+
+
+; Hello World GBC Palettes
+_HelloWorldPalettes:
+    rgb_palette #000000, #555555, #AAAAAA, #FFFFFF
+    rgb_palette #000000, #550000, #AA0000, #FF0000
+    rgb_palette #000000, #005500, #00AA00, #00FF00
+    rgb_palette #000000, #000055, #0000AA, #0000FF
+    rgb_palette #000000, #555500, #AAAA00, #FFFF00
+    rgb_palette #000000, #542A00, #AA5500, #FF8000
+    rgb_palette #000000, #005555, #00AAAA, #00FFFF
+    rgb_palette #000000, #550055, #AA00AA, #FF00FF
 
 
 ; Hello World sounds
@@ -168,6 +209,14 @@ _SfxPercussion:
     sound_entry_ch4 5, 0, 7,0,0, 5,1,7, 0
     sound_entry_stop
 
+
+ENDSECTION
+
+
+SECTION "Hello World Variables", WRAM0
+
+wColorPalette:
+    DB
 
 ENDSECTION
 

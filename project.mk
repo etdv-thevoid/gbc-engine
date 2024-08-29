@@ -45,7 +45,7 @@ SRAMSIZE := 0x02
 # ASMFLAGS += -E
 
 # Game Boy Color compatible.
-# FIXFLAGS += -c
+FIXFLAGS += -c
 # Game Boy Color required.
 # FIXFLAGS += -C
 
