@@ -1,0 +1,4 @@
+; Simple percussion sound effect
+    sound_entry_start 4, 1
+    sound_entry_ch4 5, 0, 7,0,0, 5,1,7, 0
+    sound_entry_stop

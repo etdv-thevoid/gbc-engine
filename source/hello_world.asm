@@ -160,14 +160,7 @@ _HelloWorldSetBackgroundColor:
 
 ; Hello World GBC Palettes
 _HelloWorldPalettes:
-    rgb_palette #000000, #555555, #AAAAAA, #FFFFFF
-    rgb_palette #000000, #550000, #AA0000, #FF0000
-    rgb_palette #000000, #005500, #00AA00, #00FF00
-    rgb_palette #000000, #000055, #0000AA, #0000FF
-    rgb_palette #000000, #555500, #AAAA00, #FFFF00
-    rgb_palette #000000, #552A00, #AA5500, #FF7F00
-    rgb_palette #000000, #005555, #00AAAA, #00FFFF
-    rgb_palette #000000, #550055, #AA00AA, #FF00FF
+    INCLUDE "assets/palettes/hello_world.pal"
 
 
 ; Hello World sounds
@@ -178,36 +171,17 @@ _HelloWorldSounds:
     DW _SfxPercussion
     DW _NULL
 
-
-; Simple coin collect sound effect
 _SfxCoinCollect:
-    sound_entry_start 1, 2
-    sound_entry_ch1  5, 0,0,0, 2,42, 15,0,0, 0, 1915
-    sound_entry_ch1 15, 0,0,0, 2, 4, 15,0,0, 0, 1949
-    sound_entry_stop
+    INCLUDE "assets/sound_effects/coin.sfx"
 
-
-; Simple Game Over sound effect
 _SfxGameOver:
-    sound_entry_start 2, 3
-    sound_entry_ch2 3, 2,51, 15,0,0, 0, 31
-    sound_entry_ch2 2, 2,55, 7,0,0,  0, 31
-    sound_entry_ch2 5, 2,42, 15,0,0, 0, 31
-    sound_entry_stop
+    INCLUDE "assets/sound_effects/game_over.sfx"
 
-
-; Simple jump sound effect
 _SfxJump:
-    sound_entry_start 3, 1
-    sound_entry_ch3 3, 0, 3, 1, 1924
-    sound_entry_stop
+    INCLUDE "assets/sound_effects/jump.sfx"
 
-
-; Simple percussion sound effect
 _SfxPercussion:
-    sound_entry_start 4, 1
-    sound_entry_ch4 5, 0, 7,0,0, 5,1,7, 0
-    sound_entry_stop
+    INCLUDE "assets/sound_effects/percussion.sfx"
 
 
 ENDSECTION
@@ -221,7 +195,7 @@ wColorPalette:
 ENDSECTION
 
 
-SECTION "Tilemap Decompression Buffer", WRAMX[_RAMBANK], BANK[1]
+SECTION "Tilemap Decompression Buffer", WRAMX, BANK[1]
 
 wTilemapDecompressionBuffer:
     DS $1000

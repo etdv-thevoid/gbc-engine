@@ -1,0 +1,4 @@
+; Simple jump sound effect
+    sound_entry_start 3, 1
+    sound_entry_ch3 3, 0, 3, 1, 1924
+    sound_entry_stop

@@ -2,7 +2,7 @@ INCLUDE "libraries/hardware.inc/hardware.inc"
     rev_Check_hardware_inc 4.9.1
 
 INCLUDE "libraries/gbc-engine-core/gbc-engine-core-macros.inc"
-    gbc_engine_core_version 1.4.0
+    gbc_engine_core_version 1.4.1
 
 
 /*******************************************************************************

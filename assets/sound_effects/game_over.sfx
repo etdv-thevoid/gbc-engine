@@ -1,0 +1,6 @@
+; Simple Game Over sound effect
+    sound_entry_start 2, 3
+    sound_entry_ch2 3, 2,51, 15,0,0, 0, 31
+    sound_entry_ch2 2, 2,55, 7,0,0,  0, 31
+    sound_entry_ch2 5, 2,42, 15,0,0, 0, 31
+    sound_entry_stop
