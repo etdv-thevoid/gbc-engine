@@ -183,7 +183,6 @@ _SfxJump:
 _SfxPercussion:
     INCLUDE "assets/sound_effects/percussion.sfx"
 
-
 ENDSECTION
 
 
