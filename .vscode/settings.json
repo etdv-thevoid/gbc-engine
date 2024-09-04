@@ -1,0 +1,12 @@
+{
+    "rgbdsz80.formatting.capitalization": {
+        "language": "lower",
+        "language.hex": "upper",
+        "language.keyword": "upper",
+    },
+    "rgbdsz80.includeAllDocCommentNewlines": false,
+    "rgbdsz80.includePath": [
+        "",
+    ],
+    "rgbdsz80.showInstructionCompletionSuggestions": true,
+}
