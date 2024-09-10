@@ -1,9 +1,23 @@
-; Hello World Background palette
+; palette 0 - Greyscale
     rgb_palette #000000, #555555, #AAAAAA, #FFFFFF
+
+; palette 1 - Red
     rgb_palette #000000, #550000, #AA0000, #FF0000
+
+; palette 2 - Green
     rgb_palette #000000, #005500, #00AA00, #00FF00
+
+; palette 3 - Blue
     rgb_palette #000000, #000055, #0000AA, #0000FF
+
+; palette 4 - Yellow
     rgb_palette #000000, #555500, #AAAA00, #FFFF00
+    
+; palette 5 - Orange
     rgb_palette #000000, #552A00, #AA5500, #FF7F00
+    
+; palette 6 - Cyan
     rgb_palette #000000, #005555, #00AAAA, #00FFFF
+    
+; palette 7 - Magenta
     rgb_palette #000000, #550055, #AA00AA, #FF00FF

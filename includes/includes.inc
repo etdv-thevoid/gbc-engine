@@ -4,7 +4,6 @@ INCLUDE "libraries/hardware.inc/hardware.inc"
 INCLUDE "libraries/gbc-engine-core/gbc-engine-core-macros.inc"
     gbc_engine_core_version 1.4.1
 
-
 /*******************************************************************************
 **
 **  CHARMAPS
@@ -14,7 +13,6 @@ INCLUDE "libraries/gbc-engine-core/gbc-engine-core-macros.inc"
 INCLUDE "includes/charmaps/charmaps.inc"
 
 
-
 /*******************************************************************************
 **
 **  CONSTANTS
@@ -22,7 +20,6 @@ INCLUDE "includes/charmaps/charmaps.inc"
 *******************************************************************************/
 
 INCLUDE "includes/constants/constants.inc"
-
 
 
 /*******************************************************************************
