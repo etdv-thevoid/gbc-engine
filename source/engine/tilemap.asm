@@ -10,7 +10,7 @@ Input:
 - `a` = VRAM bank
 - `hl` = Pointer to rle compressed tilemap data
 */
-_LoadFontTilesSCRN1::
+_LoadTilemapSCRN1::
     ld de, vSCRN1
     jr _LoadTilemap
 
