@@ -1,0 +1,9 @@
+; Inverted color palette
+    rgb_palette #000000, #555555, #AAAAAA, #FFFFFF  ; COLOR_WHITE
+    rgb_palette #000000, #550000, #AA0000, #FF0000  ; COLOR_RED
+    rgb_palette #000000, #005500, #00AA00, #00FF00  ; COLOR_GREEN
+    rgb_palette #000000, #000055, #0000AA, #0000FF  ; COLOR_BLUE
+    rgb_palette #000000, #555500, #AAAA00, #FFFF00  ; COLOR_YELLOW
+    rgb_palette #000000, #552A00, #AA5500, #FF7F00  ; COLOR_ORANGE
+    rgb_palette #000000, #005555, #00AAAA, #00FFFF  ; COLOR_CYAN
+    rgb_palette #000000, #550055, #AA00AA, #FF00FF  ; COLOR_MAGENTA

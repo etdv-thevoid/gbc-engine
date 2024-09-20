@@ -8,7 +8,7 @@ Increments and updates the current color palette
 */
 _IncrementPalette::
     ld hl, wColorPaletteCurrent
-    ld a, OAMF_PALMASK
+    ld a, %0000_1111
     inc [hl]
     and a, [hl]
     ld [hl], a
@@ -27,9 +27,9 @@ Sets background palette 0 - Color
 */
 _LoadPaletteColor:
     ld a, [wColorPaletteCurrent]
-    ld hl, _DefaultPaletteColors
+    ld hl, _PaletteColors
     ld b, NUMBER_OF_PALLETE_BYTES
-    ld c, NUMBER_OF_PALLETE_COLORS
+    ld c, (NUMBER_OF_PALLETE_COLORS * 2)
     call _DataTable
 
     xor a
@@ -46,19 +46,11 @@ _LoadPaletteMonochrome:
 
 
 /*
-Simple default palette colors
-
-- Greyscale
-- Red
-- Blue
-- Green
-- Yellow
-- Orange
-- Cyan
-- Magenta
+Simple palette colors
 */
-_DefaultPaletteColors:
+_PaletteColors:
     INCLUDE "assets/palettes/default.pal"
+    INCLUDE "assets/palettes/inverted.pal"
 .end:
 
 ENDSECTION
